@@ -36,7 +36,7 @@ async def main():
                         msg = x.text
                     if msg == "/start":
                         TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})** \n**╰⊚ 𝓢𝓽𝓪𝓽𝓾𝓼: 𝓞𝓯𝓯𝓵𝓲𝓷𝓮 ❄**"
-                        await app.send_message(LOG_ID, f"**[{ok.first_name}](tg://openmessage?user_id={ok.id}) ᴏғғ ʜᴀɪ. ᴀᴄᴄʜᴀ ʜᴜᴀ ᴅᴇᴋʜ ʟɪʏᴀ ᴍᴀɪɴᴇ.**")
+                        await app.send_message(LOG_ID, f"sultan 𝓢𝓲𝓻 **[{ok.first_name}](tg://openmessage?user_id={ok.id}) 𝓞𝓯𝓯 𝓗𝓮..**")
                         await app.read_chat_history(bots)
                     else:
                         TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id}) : 𝓞𝓷𝓵𝓲𝓷𝓮 ✨**\n**╰⊚** 𝓛𝓲𝓿𝓮"

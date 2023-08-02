@@ -39,7 +39,7 @@ async def main():
                         await app.send_message(LOG_ID, f"sultan 𝓢𝓲𝓻 **[{ok.first_name}](tg://openmessage?user_id={ok.id}) 𝓞𝓯𝓯 𝓗𝓮..**")
                         await app.read_chat_history(bots)
                     else:
-                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id}) : 𝓞𝓷𝓵𝓲𝓷𝓮 ✨**\n**╰⊚** 𝓛𝓲𝓿𝓮"
+                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id}) \n: 𝓢𝓽𝓪𝓽𝓾𝓼 ✨**\n**╰⊚** 𝓛𝓲𝓿𝓮"
                         await app.read_chat_history(bots)
                 except FloodWait as e:
                     await asyncio.sleep(e.value)

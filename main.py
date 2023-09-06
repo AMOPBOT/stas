@@ -25,7 +25,7 @@ async def main():
     print("Status Checker Bot Started")
     async with app:
         while True:
-            TEXT = "✨ 𝗪𝗲𝗹𝗹𝗖𝗼𝗺𝗲 𝗧𝗼 𝗧𝗵𝗲 𝗦𝘁𝗮𝗿 𝗕𝗲𝗿𝗿𝘆 𝗡𝗲𝘁𝗪𝗼𝗿𝗸.**\n\n\n❄ Here Is The List Of The Bots.\n❄ Which We Own And Their Status\n\n𝓞𝓷𝓵𝓲𝓷𝓮 ✅ 𝓐𝓷𝓭 𝓞𝓯𝓯𝓵𝓲𝓷𝓮 ❌ \n\nThis Messege Well Keep Updating On Every 5 Minutes."
+            TEXT = "✨ 𝗪𝗲𝗹𝗹𝗖𝗼𝗺𝗲 𝗧𝗼 𝗧𝗵𝗲 𝗦𝘁𝗮𝗿 𝗕𝗲𝗿𝗿𝘆 𝗡𝗲𝘁𝗪𝗼𝗿𝗸.**\n\n\n❄ Here Is The List Of The Bots.\n❄ Which We Own And Their Status\n\n𝓞𝓷𝓵𝓲𝓷𝓮 ✅\n 𝓞𝓯𝓯𝓵𝓲𝓷𝓮 ❌ \n\nThis Messege Well Keep Updating On Every 5 Minutes."
             for bots in BOT_LIST:
                 ok = await app.get_users(f"@{bots}")
                 try:
@@ -35,11 +35,11 @@ async def main():
                     async for x in messages:
                         msg = x.text
                     if msg == "/start":
-                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})** \n**╰⊚ 𝓢𝓽𝓪𝓽𝓾𝓼: 𝓞𝓯𝓯𝓵𝓲𝓷𝓮 ❌**"
+                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})** \n**╰⊚ 𝓢𝓽𝓪𝓽𝓾𝓼:  ❌**"
                         await app.send_message(LOG_ID, f"𝓢𝓲𝓻 **[{ok.first_name}](tg://openmessage?user_id={ok.id}) 𝓞𝓯𝓯 𝓗𝓮..**")
                         await app.read_chat_history(bots)
                     else:
-                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})**\n**╰⊚** 𝓢𝓽𝓪𝓽𝓾𝓼: 𝓞𝓷𝓵𝓲𝓷𝓮 ✅"
+                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})**\n**╰⊚** 𝓢𝓽𝓪𝓽𝓾𝓼:  ✅"
                         await app.read_chat_history(bots)
                 except FloodWait as e:
                     await asyncio.sleep(e.value)

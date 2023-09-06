@@ -25,7 +25,7 @@ async def main():
     print("Status Checker Bot Started")
     async with app:
         while True:
-            TEXT = "✨ 𝗪𝗲𝗹𝗹𝗖𝗼𝗺𝗲 𝗧𝗼 𝗧𝗵𝗲 𝗦𝘁𝗮𝗿 𝗕𝗲𝗿𝗿𝘆 𝗡𝗲𝘁𝗪𝗼𝗿𝗸.**\n\n\n❄ Here Is The List Of The Bots.\n❄ Which We Own And Their Status\n\n𝓞𝓷𝓵𝓲𝓷𝓮 ✅\n 𝓞𝓯𝓯𝓵𝓲𝓷𝓮 ❌ \n\nThis Messege Well Keep Updating On Every 5 Minutes."
+            TEXT = "✨ 𝗪𝗲𝗹𝗹𝗖𝗼𝗺𝗲 𝗧𝗼 𝗧𝗵𝗲 𝗦𝘁𝗮𝗿 𝗕𝗲𝗿𝗿𝘆 𝗡𝗲𝘁𝗪𝗼𝗿𝗸.**\n\n\n❄ Here Is The List Of The Bots.\n❄ Which We Own And Their Status\n\n𝓞𝓷𝓵𝓲𝓷𝓮 ✅\n𝓞𝓯𝓯𝓵𝓲𝓷𝓮 ❌ \n\nThis Messege Well Keep Updating On Every 5 Minutes."
             for bots in BOT_LIST:
                 ok = await app.get_users(f"@{bots}")
                 try:

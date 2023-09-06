@@ -25,7 +25,7 @@ async def main():
     print("Status Checker Bot Started")
     async with app:
         while True:
-            TEXT = "✨ **𝓦𝓮𝓵𝓬𝓸𝓶𝓮 𝓣𝓸 𝓣𝓱𝓮 𝓢𝓽𝓪𝓻 𝓫𝓮𝓻𝓻𝔂 𝓷𝓮𝓽𝔀𝓸𝓻𝓴 𝓢𝓽𝓪𝓽𝓾𝓼 𝓒𝓱𝓪𝓷𝓷𝓮𝓵**\n\n❄ 𝓗𝓮𝓻𝓮 𝓘𝓼 𝓣𝓱𝓮 𝓛𝓲𝓼𝓽 𝓞𝓯 𝓣𝓱𝓮 𝓑𝓸𝓽'𝓼 𝓦𝓱𝓲𝓬𝓱 𝓦𝓮 𝓞𝔀𝓷 𝓐𝓷𝓭 𝓣𝓱𝓮𝓲𝓻 𝓢𝓽𝓪𝓽𝓾𝓼 (𝓞𝓷𝓵𝓲𝓷𝓮 ✅ 𝓐𝓷𝓭 𝓞𝓯𝓯𝓵𝓲𝓷𝓮 ❌ ), 𝓣𝓱𝓲𝓼 𝓜𝓮𝓼𝓼𝓪𝓰𝓮 𝓦𝓮𝓵𝓵 𝓚𝓮𝓮𝓹 𝓤𝓹𝓭𝓪𝓽𝓲𝓷𝓰 𝓞𝓷 **𝓔𝓿𝓮𝓻𝔂 5 𝓜𝓲𝓷𝓾𝓽𝓮𝓼.**"
+            TEXT = "✨ 𝗪𝗲𝗹𝗹𝗖𝗼𝗺𝗲 𝗧𝗼 𝗧𝗵𝗲 𝗦𝘁𝗮𝗿 𝗕𝗲𝗿𝗿𝘆 𝗡𝗲𝘁𝗪𝗼𝗿𝗸 𝗦𝘁𝗮𝘁𝘂𝘀.**\n\n❄ Here Is The List Of The Bots.\n❄ Which We Own And Their Status(𝓞𝓷𝓵𝓲𝓷𝓮 ✅ 𝓐𝓷𝓭 𝓞𝓯𝓯𝓵𝓲𝓷𝓮 ❌ )\nThis Messege Well Keep Updating On Every 5 Minutes."
             for bots in BOT_LIST:
                 ok = await app.get_users(f"@{bots}")
                 try:
@@ -36,7 +36,7 @@ async def main():
                         msg = x.text
                     if msg == "/start":
                         TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})** \n**╰⊚ 𝓢𝓽𝓪𝓽𝓾𝓼: 𝓞𝓯𝓯𝓵𝓲𝓷𝓮 ❌**"
-                        await app.send_message(LOG_ID, f"sultan 𝓢𝓲𝓻 **[{ok.first_name}](tg://openmessage?user_id={ok.id}) 𝓞𝓯𝓯 𝓗𝓮..**")
+                        await app.send_message(LOG_ID, f"𝓢𝓲𝓻 **[{ok.first_name}](tg://openmessage?user_id={ok.id}) 𝓞𝓯𝓯 𝓗𝓮..**")
                         await app.read_chat_history(bots)
                     else:
                         TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})**\n**╰⊚** 𝓢𝓽𝓪𝓽𝓾𝓼: 𝓞𝓷𝓵𝓲𝓷𝓮 ✅"

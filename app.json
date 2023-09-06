@@ -2,7 +2,7 @@
   "name": "Status Checker",
   "description": "Powerful status checker to see if all your Telegram bots are working or not..",
   "logo": "https://graph.org/file/0dbac6d474589631d4a17.jpg",
-  
+    "stack": "heroku-22",
   "env": {
     "API_ID": {
       "description": "Get from my.telegram.org/apps",
@@ -37,7 +37,6 @@
       "required": true
     }
   },
-   "stack": "container"
   "buildpacks": [
     {
       "url": "heroku/python"

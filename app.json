@@ -6,35 +6,43 @@
   "env": {
     "API_ID": {
       "description": "Get from my.telegram.org/apps",
-      "required": true
+      "required": true,
+       "value": "12227067"
     },
     "API_HASH": {
       "description": "Get from my.telegram.org/apps",
-      "required": true
+      "required": true,
+      "value": "b463bedd791aa733ae2297e6520302fe"
     },
     "STRING_SESSION": {
       "description": "A valid Pyrogram session string",
-      "required": true
+      "required": true,
+      "value": ""
     },
     "BOT_LIST": {
       "description": "Your bot username list without '@' (Example: Atiya_Robot)",
-      "required": true
+      "required": true,
+      "value": "Sophia_x_MusicBot Profile_Pundit_Bot Kayn_Robot Kora_Xbot Morgana_tg_bot MissPoppy_bot Shizuka_x_Music_bot Yone_Robot YoneTg_Robot ssgenrobot"
     },
     "CHANNEL_ID": {
       "description": "Your channel id (Example: -1001986760091)",
-      "required": true
+      "required": true,
+      "value": "-1001917024642"
     },
     "MESSAGE_ID": {
       "description": "Telegram id of message from your channel or group (Example: 10)",
-      "required": true
+      "required": true,
+      "value": "5"
     },
     "LOG_ID": {
       "description": "log id (Example: -1001971089023)",
-      "required": true
+      "required": true,
+      "value": "-1001717726836"
     },
     "TIME_ZONE": {
       "description": "Your time zone (Example: Asia/Kolkata)",
-      "required": true
+      "required": true,
+      "value": "Asia/Kolkata"
     }
   },
   "buildpacks": [

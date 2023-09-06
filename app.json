@@ -37,10 +37,10 @@
       "required": true
     }
   },
+   "stack": "container"
   "buildpacks": [
     {
       "url": "heroku/python"
     }
   ]
-   "stack": "container"
 }

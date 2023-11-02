@@ -20,7 +20,8 @@ MESSAGE_ID = int(os.environ["MESSAGE_ID"])
 BOT_ADMIN_IDS = [int(i.strip()) for i in os.environ.get("BOT_ADMIN_IDS").split(' ')]
 
 async def get_server_status():
-    cpu_percent = psutil.cpu_percent()
+    cpu_percent = psutil.cpu_percent(percpu=True)
+    total_cpu_percent = sum(cpu_percent)  # Calculate the total CPU usage
     ram = psutil.virtual_memory()
     total_ram = ram.total  # Total RAM size in bytes
     ram_percent = ram.percent
@@ -28,7 +29,7 @@ async def get_server_status():
     total_rom = disk.total  # Total disk (ROM) size in bytes
     disk_percent = disk.percent
 
-    return cpu_percent, ram_percent, total_ram, disk_percent, total_rom
+    return total_cpu_percent, ram_percent, total_ram, disk_percent, total_rom
 
 async def main_pratheek():
     async with app:
@@ -52,8 +53,8 @@ async def main_pratheek():
                                 pass
                         await app.read_chat_history(bot)
                     else:
-                        cpu_percent, ram_percent, total_ram, disk_percent, total_rom = await get_server_status()
-                        xxx_pratheek += f"\n\n🤖  @{bot}\n        └ **Alive** ✅\n\nServer Status:\nCPU Usage: {cpu_percent}%\nRAM Usage: {ram_percent}%\nTotal RAM: {total_ram / (1024 ** 3):.2f} GB\nROM Usage: {disk_percent}%\nTotal ROM: {total_rom / (1024 ** 3):.2f} GB\n"
+                        total_cpu_percent, ram_percent, total_ram, disk_percent, total_rom = await get_server_status()
+                        xxx_pratheek += f"\n\n╭⎋ 🤖  @{bot}\n╰⊚**𝓢𝓽𝓪𝓽𝓾𝓼** : ✅\n╭⎋ Server Status:\n╰⊚Total CPU Usage: {total_cpu_percent}%\n╭⎋ RAM Usage: {ram_percent}%\n╰⊚ Total RAM: {total_ram / (1024 ** 3):.2f} GB\n╭⎋ ROM Usage: {disk_percent}%\n ╰⊚Total ROM: {total_rom / (1024 ** 3):.2f} GB\n"
                         await app.read_chat_history(bot)
                 except FloodWait as e:
                     await asyncio.sleep(e.x)

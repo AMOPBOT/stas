@@ -5,7 +5,7 @@ import pytz
 import psutil
 from dotenv import load_dotenv
 from pyrogram import Client
-from pyrogram.errors import FloodWait
+from pyrogram.errors import FloodWait, UsernameInvalid
 
 load_dotenv()
 
@@ -34,12 +34,10 @@ async def main():
             total_rom = disk.total  # Total disk (ROM) size in bytes
             disk_percent = disk.percent
 
-     
-
             TEXT = "⚡️𝗛𝗲𝗿𝗲 𝗜𝘀 𝗧𝗵𝗲 𝗟𝗶𝘀𝘁 𝗢𝗳 𝗧𝗵𝗲 𝗕𝗼𝘁𝘀 ⚡️.\n\nWhich We Own And Their Status\n\nOnline ✅\nOffline ❌\n\nThis Message Will Keep Updating Every 3 Minutes."
             for bots in BOT_LIST:
-                ok = await app.get_users(f"@{bots}")
                 try:
+                    ok = await app.get_users(f"@{bots}")
                     await app.send_message(bots, "/start")
                     await asyncio.sleep(2)
                     messages = app.get_chat_history(bots, limit=1)
@@ -54,6 +52,10 @@ async def main():
                         await app.read_chat_history(bots)
                 except FloodWait as e:
                     await asyncio.sleep(e.value)
+                except UsernameInvalid as e:
+                    # Handle the case where the username is invalid
+                    print(f"Invalid Username: {bots}")
+                    # Optionally, you can log or notify about this invalid username
             time = datetime.datetime.now(pytz.timezone(f"{TIME_ZONE}"))
             date = time.strftime("%d %b %Y")
             time = time.strftime("%I:%M %p")

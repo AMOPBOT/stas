@@ -57,7 +57,7 @@ async def main_pratheek():
                         total_cpu_percent, total_cpu_cores, ram_percent, total_ram, disk_percent, total_rom, cpu_percent_per_core = await get_server_status()
                         cpu_cores_in_use = [f"Core {i + 1}: {core_percent}%" for i, core_percent in enumerate(cpu_percent_per_core)]
                         cpu_cores_text = "\n".join(cpu_cores_in_use)
-                        xxx_pratheek += f"\n\n🤖  @{bot}\n╭⎋ **Alive** ✅\n\n╰⊚ Server Status:\n╭⎋ Total CPU Usage: {total_cpu_percent}%\n╰⊚ Total CPU Cores: {total_cpu_cores}\n╭⎋ RAM Usage: {ram_percent}%\n╰⊚ Total RAM: {total_ram / (1024 ** 3):.2f} GB\n╭⎋ ROM Usage: {disk_percent}%\n╰⊚ Total ROM: {total_rom / (1024 ** 3):.2f} GB\n\n**Currently Using CPU Cores:**\n{cpu_cores_text}"
+                        xxx_pratheek += f"\n\n╭⎋🤖  @{bot}\n╰⊚ **Alive** ✅\n\n╭⎋ Server Status:\n╰⊚ Total CPU Usage: {total_cpu_percent}%\n╭⎋ Total CPU Cores: {total_cpu_cores}\n╰⊚ RAM Usage: {ram_percent}%\n╭⎋ Total RAM: {total_ram / (1024 ** 3):.2f} GB\n╰⊚ ROM Usage: {disk_percent}%\n╭⎋ Total ROM: {total_rom / (1024 ** 3):.2f} GB\n\n**╰⊚Currently Using CPU Cores:**\n{cpu_cores_text}"
                         await app.read_chat_history(bot)
                 except FloodWait as e:
                     await asyncio.sleep(e.x)

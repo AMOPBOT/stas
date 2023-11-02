@@ -40,14 +40,6 @@ async def main_pratheek():
             print("Checking...")
             total_cpu_percent, total_cpu_cores, total_ram, total_rom, used_ram, used_rom, ram_percent, disk_percent, cpu_percent_per_core = await get_server_status()
             xxx_pratheek = f"📊 | 𝗟𝗜𝗩𝗘 𝗕𝗢𝗧 𝗦𝗧𝗔𝗧𝗨𝗦\n"
-            xxx_pratheek += f"Total CPU Usage: {total_cpu_percent}%\n"
-            xxx_pratheek += f"Total CPU Cores: {total_cpu_cores}\n"
-            xxx_pratheek += f"Total RAM: {total_ram / (1024 ** 3):.2f} GB\n"
-            xxx_pratheek += f"Used RAM: {used_ram / (1024 ** 3):.2f} GB\n"
-            xxx_pratheek += f"RAM Usage: {ram_percent}%\n"
-            xxx_pratheek += f"Total ROM: {total_rom / (1024 ** 3):.2f} GB\n"
-            xxx_pratheek += f"Used ROM: {used_rom / (1024 ** 3):.2f} GB\n"
-            xxx_pratheek += f"ROM Usage: {disk_percent}%\n"
             for bot in BOT_LIST:
                 try:
                     yyy_pratheek = await app.send_message(bot, "/start")
@@ -65,7 +57,15 @@ async def main_pratheek():
                                 pass
                         await app.read_chat_history(bot)
                     else:
-                        xxx_pratheek += f"\n\n🤖  @{bot}\n        └ **Alive** ✅"
+            xxx_pratheek += f"\n\n🤖  @{bot}\n        └ **Alive** ✅\n"
+            xxx_pratheek += f"Total CPU Usage: {total_cpu_percent}%\n"
+            xxx_pratheek += f"Total CPU Cores: {total_cpu_cores}\n"
+            xxx_pratheek += f"Total RAM: {total_ram / (1024 ** 3):.2f} GB\n"
+            xxx_pratheek += f"Used RAM: {used_ram / (1024 ** 3):.2f} GB\n"
+            xxx_pratheek += f"RAM Usage: {ram_percent}%\n"
+            xxx_pratheek += f"Total ROM: {total_rom / (1024 ** 3):.2f} GB\n"
+            xxx_pratheek += f"Used ROM: {used_rom / (1024 ** 3):.2f} GB\n"
+            xxx_pratheek += f"ROM Usage: {disk_percent}%\n"
                         await app.read_chat_history(bot)
                 except FloodWait as e:
                     await asyncio.sleep(e.x)

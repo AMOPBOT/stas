@@ -50,7 +50,7 @@ async def main_pratheek():
                                 pass
                         await app.read_chat_history(bot)
                     else:
-                        xxx_pratheek += f"\n\n🤖  @{bot}\n        └ **Alive** ✅Server Status:\n\nCPU Usage: {cpu_percent}%\nRAM Usage: {ram_percent}%\nTotal RAM: {total_ram / (1024 ** 3):.2f} GB\nROM Usage: {disk_percent}%\nTotal ROM: {total_rom / (1024 ** 3):.2f} GB\n"
+                        xxx_pratheek += f"\n\n🤖  @{bot}\n        └ **Alive** ✅\n\nServer Status:\nCPU Usage: {cpu_percent}%\nRAM Usage: {ram_percent}%\nTotal RAM: {total_ram / (1024 ** 3):.2f} GB\nROM Usage: {disk_percent}%\nTotal ROM: {total_rom / (1024 ** 3):.2f} GB\n"
                         await app.read_chat_history(bot)
                 except FloodWait as e:
                     await asyncio.sleep(e.x)

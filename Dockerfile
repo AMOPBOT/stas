@@ -5,6 +5,7 @@ RUN apt-get update -y && apt-get upgrade -y \
     && rm -rf /var/lib/apt/lists/*
 COPY . /app/
 WORKDIR /app/
-RUN pip install speedtest==0.0.1
 RUN pip3 install -r requirements.txt
+RUN pip install speedtest==0.0.1
+RUN pip install speedtest-cli
 CMD python ac.py

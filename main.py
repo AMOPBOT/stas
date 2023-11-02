@@ -7,8 +7,8 @@ import os
 
 app = Client(
     name = "botstatus_pratheek",
-    api_id = int(os.environ["API_ID","12227067"]),
-    api_hash = os.environ["API_HASH","b463bedd791aa733ae2297e6520302fe"],
+    api_id = int(os.environ["API_ID"]),
+    api_hash = os.environ["API_HASH"],
     session_string = os.environ["SESSION_STRING"]
 )
 TIME_ZONE = os.environ["TIME_ZONE","Asia/Kolkata"]

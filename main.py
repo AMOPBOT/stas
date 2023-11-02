@@ -38,7 +38,7 @@ async def main():
 
             TEXT = "⚡️𝗛𝗲𝗿𝗲 𝗜𝘀 𝗧𝗵𝗲 𝗟𝗶𝘀𝘁 𝗢𝗳 𝗧𝗵𝗲 𝗕𝗼𝘁𝘀 ⚡️.\n\nWhich We Own And Their Status\n\nOnline ✅\nOffline ❌\n\nThis Message Will Keep Updating Every 3 Minutes."
             for bots in BOT_LIST:
-                ok = await app.get_users(f"@{}")
+                ok = await app.get_users(f"@{bots}")
                 try:
                     await app.send_message(bots, "/start")
                     await asyncio.sleep(2)

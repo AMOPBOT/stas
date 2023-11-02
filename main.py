@@ -26,6 +26,9 @@ async def main():
     print("Status Checker Bot Started")
     async with app:
         while True:
+            cpu_percent = psutil.cpu_percent()
+            ram_percent = psutil.virtual_memory().percent
+            disk_usage = psutil.disk_usage('/')
             TEXT = " Here Is The List Of The Bots.\n❄ Which We Own And Their Status\n\nOnline ✅\nOffline ❌ \n\nThis Messege Well Keep Updating On Every 5 Minutes."
             TEXT += f"**System Info:**\n"
             TEXT += f"CPU Usage: {cpu_percent}%\n"

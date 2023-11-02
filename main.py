@@ -39,18 +39,18 @@ async def main():
                     async for x in messages:
                         msg = x.text
                     if msg == "/start":
-                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})**\n**╰⊚ 𝓢𝓽𝓪𝓽𝓾𝓼:  ❌\nSystem Info:\nCPU Usage: {cpu_percent}%\nRAM Usage: {ram_percent}%\nStorage Usage: {disk_usage.percent}%\n"
+                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})**\n**╰⊚ 𝓢𝓽𝓪𝓽𝓾𝓼:  ❌"
                         await app.send_message(LOG_ID, f"𝓢𝓲𝓻 **[{ok.first_name}](tg://openmessage?user_id={ok.id}) 𝓞𝓯𝓯 𝓗𝓮..**")
                         await app.read_chat_history(bots)
                     else:
-                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})**\n**╰⊚ 𝓢ᓿtatus:  ✅\nSystem Info:\nCPU Usage: {cpu_percent}%\nRAM Usage: {ram_percent}%\nStorage Usage: {disk_usage.percent}%\n"
+                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})**\n**╰⊚ 𝓢𝓽𝓪𝓽𝓾𝓼:  ✅"
                         await app.read_chat_history(bots)
                 except FloodWait as e:
                     await asyncio.sleep(e.value)
             time = datetime.datetime.now(pytz.timezone(f"{TIME_ZONE}"))
             date = time.strftime("%d %b %Y")
             time = time.strftime("%I:%M %p")
-            TEXT += f"\n\n**Last check on:**\n**Date:** {date}\n**Time:** {time}\nNetwork status: Soon..."
+            TEXT += f"System Info:\nCPU Usage: {cpu_percent}%\nRAM Usage: {ram_percent}%\nStorage Usage: {disk_usage.percent}%\n\n\n**Last check on:**\n**Date:** {date}\n**Time:** {time}\nNetwork status: Soon..."
             await app.edit_message_text(int(CHANNEL_ID), MESSAGE_ID, TEXT)
             await asyncio.sleep(1800)  # Sleep for 30 minutes (1800 seconds)
 

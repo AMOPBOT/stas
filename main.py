@@ -50,7 +50,7 @@ async def main():
             time = datetime.datetime.now(pytz.timezone(f"{TIME_ZONE}"))
             date = time.strftime("%d %b %Y")
             time = time.strftime("%I:%M %p")
-            TEXT += f"System Info:\nCPU Usage: {cpu_percent}%\nRAM Usage: {ram_percent}%\nStorage Usage: {disk_usage.percent}%\n\n\n**Last check on:**\n**Date:** {date}\n**Time:** {time}\nNetwork status: Soon..."
+            TEXT += f"\n\nSystem Info:\nCPU Usage: {cpu_percent}%\nRAM Usage: {ram_percent}%\nStorage Usage: {disk_usage.percent}%\n\n\n**Last check on:**\n**Date:** {date}\n**Time:** {time}\nNetwork status: Soon..."
             await app.edit_message_text(int(CHANNEL_ID), MESSAGE_ID, TEXT)
             await asyncio.sleep(1800)  # Sleep for 30 minutes (1800 seconds)
 

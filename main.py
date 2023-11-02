@@ -7,21 +7,22 @@ import speedtest
 from dotenv import load_dotenv
 from pyrogram import Client
 from pyrogram.errors import FloodWait
+import speedtest
 
 load_dotenv()
 
 app = Client(
     name="krishna",
-    api_id=int(os.getenv("API_ID","12227067")),
-    api_hash=os.getenv("API_HASH","b463bedd791aa733ae2297e6520302fe"),
+    api_id=int(os.getenv("API_ID", "12227067")),
+    api_hash=os.getenv("API_HASH", "b463bedd791aa733ae2297e6520302fe"),
     session_string=os.getenv("STRING_SESSION")
 )
 
 BOT_LIST = [x.strip() for x in os.getenv("BOT_LIST").split(',')]
-CHANNEL_ID = int(os.getenv("CHANNEL_ID","-1001788762326"))
-MESSAGE_ID = int(os.getenv("MESSAGE_ID","3"))
-TIME_ZONE = os.getenv("TIME_ZONE","Asia/Kolkata")
-LOG_ID = int(os.getenv("LOG_ID","-1001817662435"))
+CHANNEL_ID = int(os.getenv("CHANNEL_ID", "-1001788762326"))
+MESSAGE_ID = int(os.getenv("MESSAGE_ID", "3"))
+TIME_ZONE = os.getenv("TIME_ZONE", "Asia/Kolkata")
+LOG_ID = int(os.getenv("LOG_ID", "-1001817662435"))
 
 async def main():
     print("Status Checker Bot Started")
@@ -35,12 +36,11 @@ async def main():
             total_rom = disk.total  # Total disk (ROM) size in bytes
             disk_percent = disk.percent
 
-            # Speedtest
+            # Speedtest using speedtest-cli
             st = speedtest.Speedtest()  # Create a Speedtest instance
             st.get_best_server()
-            download_speed = st.download() / (1024 ** 2)  # Download speed in Mbps
-            upload_speed = st.upload() / (1024 ** 2)  # Upload speed in Mbps
-            ping = st.results.ping  # Server ping in ms
+            download_speed = st.download() / 1024 / 1024  # Download speed in Mbps
+            upload_speed = st.upload() / 1024 / 1024  # Upload speed in Mbps
 
             TEXT = "⚡️𝗛𝗲𝗿𝗲 𝗜𝘀 𝗧𝗵𝗲 𝗟𝗶𝘀𝘁 𝗢𝗳 𝗧𝗵𝗲 𝗕𝗼𝘁𝘀 ⚡️.\n\nWhich We Own And Their Status\n\nOnline ✅\nOffline ❌\n\nThis Message Will Keep Updating Every 3 Minutes."
             for bots in BOT_LIST:
@@ -56,7 +56,7 @@ async def main():
                         await app.send_message(LOG_ID, f"@AM_YTBOTT\n𝓢𝓲𝓻 **[{ok.first_name}](tg://openmessage?user_id={ok.id}) 𝓞𝓯𝓯 𝓗𝓮..**")
                         await app.read_chat_history(bots)
                     else:
-                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})**\n**╰⊚ 𝓢𝓽𝓪𝓽𝓾𝓼:  ✅\n╭⎋ System Info:\n╰⊚CPU Usage: {cpu_percent}%\n╭⎋ RAM Usage: {ram_percent}%\n╰⊚ Total RAM: {total_ram / (1024 ** 3):.2f} GB\n╭⎋ ROM Usage: {disk_percent}%\n╰⊚ Total ROM: {total_rom / (1024 ** 3):.2f} GB\n\n╭⎋ Network Info:\n╰⊚ Server Ping: {ping} ms\n╭⎋ Download Speed: {download_speed:.2f} Mbps\n╰⊚ Upload Speed: {upload_speed:.2f} Mbps"
+                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})**\n**╰⊚ 𝓢𝓽𝓪𝓽𝓾𝓼:  ✅\n╭⎋ System Info:\n╰⊚CPU Usage: {cpu_percent}%\n╭⎋ RAM Usage: {ram_percent}%\n╰⊚ Total RAM: {total_ram / (1024 ** 3):.2f} GB\n╭⎋ ROM Usage: {disk_percent}%\n╰⊚ Total ROM: {total_rom / (1024 ** 3):.2f} GB\n\n╭⎋ Network Info:\n╰⊚ Download Speed: {download_speed:.2f} Mbps\n╭⎋ Upload Speed: {upload_speed:.2f} Mbps"
                         await app.read_chat_history(bots)
                 except FloodWait as e:
                     await asyncio.sleep(e.value)

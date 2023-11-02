@@ -3,5 +3,5 @@ tgcrypto
 pytz==2021.3
 python-dotenv
 psutil
-speedtest
+speedtest==0.0.1
 speedtest-cli

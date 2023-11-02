@@ -29,7 +29,7 @@ async def main():
             cpu_percent = psutil.cpu_percent()
             ram_percent = psutil.virtual_memory().percent
             disk_usage = psutil.disk_usage('/')
-            TEXT = " Here Is The List Of The Bots.\n❄ Which We Own And Their Status\n\nOnline ✅\nOffline ❌ \n\nThis Messege Well Keep Updating On Every 5 Minutes."
+            TEXT = " Here Is The List Of The Bots.\n❄ Which We Own And Their Status\n\nOnline ✅\nOffline ❌ \n\nThis Messege Well Keep Updating On Every 30 Minutes."
             for bots in BOT_LIST:
                 ok = await app.get_users(f"@{bots}")
                 try:
@@ -60,6 +60,6 @@ async def main():
             time = time.strftime("%I:%M %p")
             TEXT += f"\n\n**ʟᴀꜱᴛ ᴄʜᴇᴄᴋ ᴏɴ :**\n**ᴅᴀᴛᴇ :** {date}\n**ᴛɪᴍᴇ :** {time}\nɴᴇᴛᴡᴏʀᴋ ᴏꜰ : ꜱᴏᴏɴ..."
             await app.edit_message_text(int(CHANNEL_ID), (MESSAGE_ID), TEXT)
-            await asyncio.sleep(300)
+            await asyncio.sleep(1800)
 
 app.run(main())          

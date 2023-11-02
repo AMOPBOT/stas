@@ -28,6 +28,8 @@ async def get_server_status():
     total_rom = disk.total  # Total disk (ROM) size in bytes
     disk_percent = disk.percent
 
+    return cpu_percent, ram_percent, total_ram, disk_percent, total_rom
+
 async def main_pratheek():
     async with app:
         while True:
@@ -50,16 +52,15 @@ async def main_pratheek():
                                 pass
                         await app.read_chat_history(bot)
                     else:
+                        cpu_percent, ram_percent, total_ram, disk_percent, total_rom = await get_server_status()
                         xxx_pratheek += f"\n\n🤖  @{bot}\n        └ **Alive** ✅\n\nServer Status:\nCPU Usage: {cpu_percent}%\nRAM Usage: {ram_percent}%\nTotal RAM: {total_ram / (1024 ** 3):.2f} GB\nROM Usage: {disk_percent}%\nTotal ROM: {total_rom / (1024 ** 3):.2f} GB\n"
                         await app.read_chat_history(bot)
                 except FloodWait as e:
                     await asyncio.sleep(e.x)
 
-            server_status_text = await get_server_status()  # Get server status again
-
             time = datetime.datetime.now(pytz.timezone(f"{TIME_ZONE}"))
             last_update = time.strftime(f"%d %b %Y at %I:%M %p")
-            xxx_pratheek += f"\n\n✔️ Last checked on: {last_update} ({TIME_ZONE})\n\n**♻️ Refreshes every 3 minutes automatically - Powered By : **{server_status_text}"
+            xxx_pratheek += f"\n\n✔️ Last checked on: {last_update} ({TIME_ZONE})\n\n**♻️ Refreshes every 3 minutes automatically - Powered By : **"
             await app.edit_message_text(int(CHANNEL_OR_GROUP_ID), MESSAGE_ID, xxx_pratheek)
             print(f"Last checked on: {last_update}")
             await asyncio.sleep(180)  # Sleep for 3 minutes (180 seconds)

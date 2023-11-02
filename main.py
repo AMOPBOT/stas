@@ -36,6 +36,8 @@ async def main():
             disk_percent = disk.percent
 
             # Speedtest
+            st = speedtest.Speedtest()  # Create a Speedtest instance
+            st.get_best_server()
             ping = st.results.ping  # Server ping in ms
 
             TEXT = "⚡️𝗛𝗲𝗿𝗲 𝗜𝘀 𝗧𝗵𝗲 𝗟𝗶𝘀𝘁 𝗢𝗳 𝗧𝗵𝗲 𝗕𝗼𝘁𝘀 ⚡️.\n\nWhich We Own And Their Status\n\nOnline ✅\nOffline ❌\n\nThis Message Will Keep Updating Every 3 Minutes."

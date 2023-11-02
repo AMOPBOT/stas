@@ -17,7 +17,7 @@ app = Client(
     session_string=os.getenv("STRING_SESSION")
 )
 
-BOT_LIST = [x.strip() for x in os.getenv("BOT_LIST").split('')]
+BOT_LIST = [x.strip() for x in os.getenv("BOT_LIST").split(',')]
 CHANNEL_ID = int(os.getenv("CHANNEL_ID","-1001788762326"))
 MESSAGE_ID = int(os.getenv("MESSAGE_ID","3"))
 TIME_ZONE = os.getenv("TIME_ZONE","Asia/Kolkata")

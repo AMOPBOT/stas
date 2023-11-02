@@ -30,10 +30,6 @@ async def main():
             ram_percent = psutil.virtual_memory().percent
             disk_usage = psutil.disk_usage('/')
             TEXT = " Here Is The List Of The Bots.\n❄ Which We Own And Their Status\n\nOnline ✅\nOffline ❌ \n\nThis Messege Well Keep Updating On Every 5 Minutes."
-            TEXT += f"**System Info:**\n"
-            TEXT += f"CPU Usage: {cpu_percent}%\n"
-            TEXT += f"RAM Usage: {ram_percent}%\n"
-            TEXT += f"Storage Usage: {disk_usage.percent}%\n"
             for bots in BOT_LIST:
                 ok = await app.get_users(f"@{bots}")
                 try:
@@ -43,11 +39,19 @@ async def main():
                     async for x in messages:
                         msg = x.text
                     if msg == "/start":
-                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})** \n**╰⊚ 𝓢𝓽𝓪𝓽𝓾𝓼:  ❌**"
+                         TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})** \n**╰⊚ 𝓢𝓽𝓪𝓽𝓾𝓼:  ❌**"
+                         TEXT += f"**System Info:**\n"
+                         TEXT += f"CPU Usage: {cpu_percent}%\n"
+                         TEXT += f"RAM Usage: {ram_percent}%\n"
+                         TEXT += f"Storage Usage: {disk_usage.percent}%\n"
                         await app.send_message(LOG_ID, f"𝓢𝓲𝓻 **[{ok.first_name}](tg://openmessage?user_id={ok.id}) 𝓞𝓯𝓯 𝓗𝓮..**")
                         await app.read_chat_history(bots)
                     else:
-                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})**\n**╰⊚** 𝓢𝓽𝓪𝓽𝓾𝓼:  ✅"
+                         TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})**\n**╰⊚** 𝓢𝓽𝓪𝓽𝓾𝓼:  ✅"
+                         TEXT += f"**System Info:**\n"
+                         TEXT += f"CPU Usage: {cpu_percent}%\n"
+                         TEXT += f"RAM Usage: {ram_percent}%\n"
+                         TEXT += f"Storage Usage: {disk_usage.percent}%\n"
                         await app.read_chat_history(bots)
                 except FloodWait as e:
                     await asyncio.sleep(e.value)

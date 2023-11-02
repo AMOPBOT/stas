@@ -25,17 +25,29 @@ async def get_server_status():
     total_cpu_cores = psutil.cpu_count(logical=False)  # Get the total number of physical CPU cores
     ram = psutil.virtual_memory()
     total_ram = ram.total  # Total RAM size in bytes
+    used_ram = ram.used
     ram_percent = ram.percent
     disk = psutil.disk_usage('/')
     total_rom = disk.total  # Total disk (ROM) size in bytes
+    used_rom = disk.used
     disk_percent = disk.percent
 
-    return total_cpu_percent, total_cpu_cores, ram_percent, total_ram, disk_percent, total_rom, cpu_percent_per_core
+    return total_cpu_percent, total_cpu_cores, total_ram, total_rom, used_ram, used_rom, ram_percent, disk_percent, cpu_percent_per_core
 
 async def main_pratheek():
     async with app:
         while True:
             print("Checking...")
+            total_cpu_percent, total_cpu_cores, total_ram, total_rom, used_ram, used_rom, ram_percent, disk_percent, cpu_percent_per_core = await get_server_status()
+            xxx_pratheek = f"📊 | 𝗟𝗜𝗩𝗘 𝗕𝗢𝗧 𝗦𝗧𝗔𝗧𝗨𝗦\n"
+            xxx_pratheek += f"Total CPU Usage: {total_cpu_percent}%\n"
+            xxx_pratheek += f"Total CPU Cores: {total_cpu_cores}\n"
+            xxx_pratheek += f"Total RAM: {total_ram / (1024 ** 3):.2f} GB\n"
+            xxx_pratheek += f"Used RAM: {used_ram / (1024 ** 3):.2f} GB\n"
+            xxx_pratheek += f"RAM Usage: {ram_percent}%\n"
+            xxx_pratheek += f"Total ROM: {total_rom / (1024 ** 3):.2f} GB\n"
+            xxx_pratheek += f"Used ROM: {used_rom / (1024 ** 3):.2f} GB\n"
+            xxx_pratheek += f"ROM Usage: {disk_percent}%\n"
             for bot in BOT_LIST:
                 try:
                     yyy_pratheek = await app.send_message(bot, "/start")
@@ -45,7 +57,7 @@ async def main_pratheek():
                     async for ccc in zzz_pratheek:
                         bbb = ccc.id
                     if aaa == bbb:
-                        xxx_pratheek = f"📊 | 𝗟𝗜𝗩𝗘 𝗕𝗢𝗧 𝗦𝗧𝗔𝗧𝗨𝗦\n\n🤖  @{bot}\n        └ **Down** ❌"
+                        xxx_pratheek += f"\n\n🤖  @{bot}\n        └ **Down** ❌"
                         for bot_admin_id in BOT_ADMIN_IDS:
                             try:
                                 await app.send_message(int(bot_admin_id), f"🚨 **Beep! Beep!! @{bot} is down** ❌")
@@ -53,19 +65,17 @@ async def main_pratheek():
                                 pass
                         await app.read_chat_history(bot)
                     else:
-                        total_cpu_percent, total_cpu_cores, ram_percent, total_ram, disk_percent, total_rom, cpu_percent_per_core = await get_server_status()
-                        cpu_cores_in_use = [f"Core {i + 1}: {core_percent}%" for i, core_percent in enumerate(cpu_percent_per_core)]
-                        cpu_cores_text = "\n".join(cpu_cores_in_use)
-                        xxx_pratheek = f"📊 | 𝗟𝗜𝗩𝗘 𝗕𝗢𝗧 𝗦𝗧𝗔𝗧𝗨𝗦\n\n╭⎋🤖  @{bot}\n╰⊚**Alive** ✅\n\n╭⎋ Server Status:\n╰⊚ Total CPU Usage: {total_cpu_percent}%\n╭⎋ Total CPU Cores: {total_cpu_cores}\n╰⊚ RAM Usage: {ram_percent}%\n╭⎋ Total RAM: {total_ram / (1024 ** 3):.2f} GB\n╰⊚ ROM Usage: {disk_percent}%\n╭⎋ Total ROM: {total_rom / (1024 ** 3):.2f} GB\n\n**╰⊚ Using cores:\n{cpu_cores_text}"
+                        xxx_pratheek += f"\n\n🤖  @{bot}\n        └ **Alive** ✅"
                         await app.read_chat_history(bot)
                 except FloodWait as e:
                     await asyncio.sleep(e.x)
 
             time = datetime.datetime.now(pytz.timezone(f"{TIME_ZONE}"))
             last_update = time.strftime(f"%d %b %Y at %I:%M %p")
-            xxx_pratheek += f"\n\n✔️ Last checked on: {last_update} ({TIME_ZONE})\n\n**♻️ Refreshes every 3 minutes automatically - Powered By : **"
+            xxx_pratheek += f"\n\n✔️ Last checked on: {last_update} ({TIME_ZONE})\n"
+            xxx_pratheek += "**♻️ Refreshes every 3min automatically - Powered By...**"
             await app.edit_message_text(int(CHANNEL_OR_GROUP_ID), MESSAGE_ID, xxx_pratheek)
             print(f"Last checked on: {last_update}")
-            await asyncio.sleep(180)  # Sleep for 3 minutes (180 seconds)
+            await asyncio.sleep(180)
 
 app.run(main_pratheek())

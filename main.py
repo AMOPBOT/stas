@@ -40,7 +40,7 @@ async def main():
                         msg = x.text
                     if msg == "/start":
                         TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})**\n**╰⊚ 𝓢𝓽𝓪𝓽𝓾𝓼:  ❌"
-                        await app.send_message(LOG_ID, f"𝓢𝓲𝓻 **[{ok.first_name}](tg://openmessage?user_id={ok.id}) 𝓞𝓯𝓯 𝓗𝓮..**")
+                        await app.send_message(LOG_ID, f"@AM_YTBOTT\n𝓢𝓲𝓻 **[{ok.first_name}](tg://openmessage?user_id={ok.id}) 𝓞𝓯𝓯 𝓗𝓮..**")
                         await app.read_chat_history(bots)
                     else:
                         TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})**\n**╰⊚ 𝓢𝓽𝓪𝓽𝓾𝓼:  ✅\n╭⎋ System Info:\n╰⊚CPU Usage: {cpu_percent}%\n╭⎋ RAM Usage: {ram_percent}%\n╰⊚ Storage Usage: {disk_usage.percent}%\n"

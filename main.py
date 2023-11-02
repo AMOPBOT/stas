@@ -2,6 +2,7 @@ import os
 import asyncio
 import datetime
 import pytz
+import psutil
 from dotenv import load_dotenv
 from pyrogram import Client
 from pyrogram.errors import FloodWait
@@ -26,6 +27,10 @@ async def main():
     async with app:
         while True:
             TEXT = " Here Is The List Of The Bots.\n❄ Which We Own And Their Status\n\nOnline ✅\nOffline ❌ \n\nThis Messege Well Keep Updating On Every 5 Minutes."
+            TEXT += f"**System Info:**\n"
+            TEXT += f"CPU Usage: {cpu_percent}%\n"
+            TEXT += f"RAM Usage: {ram_percent}%\n"
+            TEXT += f"Storage Usage: {disk_usage.percent}%\n"
             for bots in BOT_LIST:
                 ok = await app.get_users(f"@{bots}")
                 try:

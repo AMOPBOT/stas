@@ -12,16 +12,16 @@ load_dotenv()
 
 app = Client(
     name="krishna",
-    api_id=int(os.getenv("API_ID")),
-    api_hash=os.getenv("API_HASH"),
+    api_id=int(os.getenv("API_ID","12227067")),
+    api_hash=os.getenv("API_HASH","b463bedd791aa733ae2297e6520302fe"),
     session_string=os.getenv("STRING_SESSION")
 )
 
-BOT_LIST = [x.strip() for x in os.getenv("BOT_LIST").split(' ')]
-CHANNEL_ID = int(os.getenv("CHANNEL_ID"))
-MESSAGE_ID = int(os.getenv("MESSAGE_ID"))
-TIME_ZONE = os.getenv("TIME_ZONE")
-LOG_ID = int(os.getenv("LOG_ID"))
+BOT_LIST = [x.strip() for x in os.getenv("BOT_LIST").split('Anierobot_bot MRS_ERICA_BOT Profile_Pundit_Bot Kayn_Robot Kora_Xbot Morgana_tg_bot MissPoppy_bot Sophia_x_MusicBot Shizuka_x_Music_bot Yone_Robot YoneTg_Robot')]
+CHANNEL_ID = int(os.getenv("CHANNEL_ID","-1001788762326"))
+MESSAGE_ID = int(os.getenv("MESSAGE_ID","3"))
+TIME_ZONE = os.getenv("TIME_ZONE","Asia/Kolkata")
+LOG_ID = int(os.getenv("LOG_ID","-1001817662435"))
 
 async def main():
     print("Status Checker Bot Started")

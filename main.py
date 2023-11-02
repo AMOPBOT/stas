@@ -3,7 +3,7 @@ import asyncio
 import datetime
 import pytz
 import psutil
-import speedtest
+import speedtest_cli as speedtest  # Update the import
 from dotenv import load_dotenv
 from pyrogram import Client
 from pyrogram.errors import FloodWait

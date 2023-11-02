@@ -6,5 +6,5 @@ RUN apt-get update -y && apt-get upgrade -y \
 COPY . /app/
 WORKDIR /app/
 RUN pip install speedtest==0.0.1
-RUN pip3 install --no-cache-dir --upgrade pip --requirement requirements.txt
+RUN pip3 install -r requirements.txt
 CMD python ac.py

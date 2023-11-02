@@ -1,66 +1,53 @@
-import os
+from pyrogram import Client, filters
+from pyrogram.errors import FloodWait
 import asyncio
 import datetime
 import pytz
-import psutil
-from dotenv import load_dotenv
-from pyrogram import Client
-from pyrogram.errors import FloodWait, UsernameInvalid
-
-load_dotenv()
+import os
 
 app = Client(
-    name="krishna",
-    api_id=int(os.getenv("API_ID", "12227067")),
-    api_hash=os.getenv("API_HASH", "b463bedd791aa733ae2297e6520302fe"),
-    session_string=os.getenv("STRING_SESSION")
+    name = "botstatus_pratheek",
+    api_id = int(os.environ["API_ID","12227067"]),
+    api_hash = os.environ["API_HASH","b463bedd791aa733ae2297e6520302fe"],
+    session_string = os.environ["SESSION_STRING"]
 )
+TIME_ZONE = os.environ["TIME_ZONE","Asia/Kolkata"]
+BOT_LIST = [i.strip() for i in os.environ.get("BOT_LIST").split(' ')]
+CHANNEL_OR_GROUP_ID = int(os.environ["CHANNEL_OR_GROUP_ID"])
+MESSAGE_ID = int(os.environ["MESSAGE_ID"])
+BOT_ADMIN_IDS = [int(i.strip()) for i in os.environ.get("BOT_ADMIN_IDS").split(' ')]
 
-BOT_LIST = [x.strip() for x in os.getenv("BOT_LIST").split(',')]
-CHANNEL_ID = int(os.getenv("CHANNEL_ID", "-1001788762326"))
-MESSAGE_ID = int(os.getenv("MESSAGE_ID", "3"))
-TIME_ZONE = os.getenv("TIME_ZONE", "Asia/Kolkata")
-LOG_ID = int(os.getenv("LOG_ID", "-1001817662435"))
-
-async def main():
-    print("Status Checker Bot Started")
+async def main_pratheek():
     async with app:
-        while True:
-            cpu_percent = psutil.cpu_percent()
-            ram = psutil.virtual_memory()
-            total_ram = ram.total  # Total RAM size in bytes
-            ram_percent = ram.percent
-            disk = psutil.disk_usage('/')
-            total_rom = disk.total  # Total disk (ROM) size in bytes
-            disk_percent = disk.percent
-
-            TEXT = "⚡️𝗛𝗲𝗿𝗲 𝗜𝘀 𝗧𝗵𝗲 𝗟𝗶𝘀𝘁 𝗢𝗳 𝗧𝗵𝗲 𝗕𝗼𝘁𝘀 ⚡️.\n\nWhich We Own And Their Status\n\nOnline ✅\nOffline ❌\n\nThis Message Will Keep Updating Every 3 Minutes."
-            for bots in BOT_LIST:
-                try:
-                    ok = await app.get_users(f"@{bots}")
-                    await app.send_message(bots, "/start")
-                    await asyncio.sleep(2)
-                    messages = app.get_chat_history(bots, limit=1)
-                    async for x in messages:
-                        msg = x.text
-                    if msg == "/start":
-                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})**\n**╰⊚ 𝓢𝓽𝓪𝓽𝓾𝓼:  ❌"
-                        await app.send_message(LOG_ID, f"@AM_YTBOTT\n𝓢𝓲𝓻 **[{ok.first_name}](tg://openmessage?user_id={ok.id}) 𝓞𝓯𝓯 𝓗𝓮..**")
-                        await app.read_chat_history(bots)
-                    else:
-                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})**\n**╰⊚ 𝓢𝓽𝓪𝓽𝓾𝓼:  ✅\n╭⎋ System Info:\n╰⊚CPU Usage: {cpu_percent}%\n╭⎋ RAM Usage: {ram_percent}%\n╰⊚ Total RAM: {total_ram / (1024 ** 3):.2f} GB\n╭⎋ ROM Usage: {disk_percent}%\n╰⊚ Total ROM: {total_rom / (1024 ** 3):.2f} GB"
-                        await app.read_chat_history(bots)
-                except FloodWait as e:
-                    await asyncio.sleep(e.value)
-                except UsernameInvalid as e:
-                    # Handle the case where the username is invalid
-                    print(f"Invalid Username: {bots}")
-                    # Optionally, you can log or notify about this invalid username
-            time = datetime.datetime.now(pytz.timezone(f"{TIME_ZONE}"))
-            date = time.strftime("%d %b %Y")
-            time = time.strftime("%I:%M %p")
-            TEXT += f"\n\n**Last check on:**\n**Date:** {date}\n**Time:** {time}\nNetwork status: Soon..."
-            await app.edit_message_text(int(CHANNEL_ID), MESSAGE_ID, TEXT)
-            await asyncio.sleep(180)  # Sleep for 3 minutes (180 seconds)
-
-app.run(main())
+            while True:
+                print("Checking...")
+                xxx_pratheek = f"📊 | 𝗟𝗜𝗩𝗘 𝗕𝗢𝗧 𝗦𝗧𝗔𝗧𝗨𝗦"
+                for bot in BOT_LIST:
+                    try:
+                        yyy_pratheek = await app.send_message(bot, "/start")
+                        aaa = yyy_pratheek.id
+                        await asyncio.sleep(10)
+                        zzz_pratheek = app.get_chat_history(bot, limit = 1)
+                        async for ccc in zzz_pratheek:
+                            bbb = ccc.id
+                        if aaa == bbb:
+                            xxx_pratheek += f"\n\n🤖  @{bot}\n        └ **Down** ❌"
+                            for bot_admin_id in BOT_ADMIN_IDS:
+                                try:
+                                    await app.send_message(int(bot_admin_id), f"🚨 **Beep! Beep!! @{bot} is down** ❌")
+                                except Exception:
+                                    pass
+                            await app.read_chat_history(bot)
+                        else:
+                            xxx_pratheek += f"\n\n🤖  @{bot}\n        └ **Alive** ✅"
+                            await app.read_chat_history(bot)
+                    except FloodWait as e:
+                        await asyncio.sleep(e.x)            
+                time = datetime.datetime.now(pytz.timezone(f"{TIME_ZONE}"))
+                last_update = time.strftime(f"%d %b %Y at %I:%M %p")
+                xxx_pratheek += f"\n\n✔️ Last checked on: {last_update} ({TIME_ZONE})\n\n**♻️ Refreshes automatically - Powered By : Soon...**"
+                await app.edit_message_text(int(CHANNEL_OR_GROUP_ID), MESSAGE_ID, xxx_pratheek)
+                print(f"Last checked on: {last_update}")                
+                await asyncio.sleep(130)
+                        
+app.run(main_pratheek())

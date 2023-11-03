@@ -70,12 +70,8 @@ async def main_pratheek():
                         xxx_pratheek += f"\n\n🤖  @{bot}\n        └ **Alive** ✅\n"
                         xxx_pratheek += f"\n        └ **Uptime**: {str(uptime).split('.')[0]}\n"
                         xxx_pratheek += f"╭⎋ Total CPU Usage: {total_cpu_percent}%\n"
-                        xxx_pratheek += f"╰⊚ Total CPU Cores: {total_cpu_cores}\n"
-                        xxx_pratheek += f"╭⎋ Total RAM: {total_ram / (1024 ** 3):.2f} GB\n"
                         xxx_pratheek += f"╰⊚ Used RAM: {used_ram / (1024 ** 3):.2f} GB\n"
                         xxx_pratheek += f"╭⎋ RAM Usage: {ram_percent}%\n"
-                        xxx_pratheek += f"╰⊚ Total ROM: {total_rom / (1024 ** 3):.2f} GB\n"
-                        xxx_pratheek += f"╭⎋ Used ROM: {used_rom / (1024 ** 3):.2f} GB\n"
                         xxx_pratheek += f"╰⊚ ROM Usage: {disk_percent}%\n"
                         # Your existing code to display server status
 

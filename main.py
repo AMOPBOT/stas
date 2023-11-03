@@ -23,7 +23,19 @@ BOT_ADMIN_IDS = [int(i.strip()) for i in os.environ.get("BOT_ADMIN_IDS").split('
 bot_uptimes = {}
 
 async def get_server_status():
-    # Your existing code to get server status
+    cpu_percent_per_core = psutil.cpu_percent(interval=1, percpu=True)
+    total_cpu_percent = sum(cpu_percent_per_core)  # Calculate the total CPU usage
+    total_cpu_cores = psutil.cpu_count(logical=False)  # Get the total number of physical CPU cores
+    ram = psutil.virtual_memory()
+    total_ram = ram.total  # Total RAM size in bytes
+    used_ram = ram.used
+    ram_percent = ram.percent
+    disk = psutil.disk_usage('/')
+    total_rom = disk.total  # Total disk (ROM) size in bytes
+    used_rom = disk.used
+    disk_percent = disk.percent
+
+    return total_cpu_percent, total_cpu_cores, total_ram, total_rom, used_ram, used_rom, ram_percent, disk_percent, cpu_percent_per_core
 
 async def main_pratheek():
     async with app:

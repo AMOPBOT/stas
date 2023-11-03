@@ -80,5 +80,3 @@ async def main_pratheek():
             await asyncio.sleep(180)
 
 app.run(main_pratheek())
-
-                        

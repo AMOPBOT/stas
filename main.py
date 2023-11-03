@@ -72,7 +72,7 @@ async def main_pratheek():
                         xxx_pratheek += f"\n\n🤖  @{bot}  : **Alive** ✅\n"
                         xxx_pratheek += f"┗**Uptime**: {str(uptime).split('.')[0]} | "
                         xxx_pratheek += f"CPU Usage: {total_cpu_percent}% | "
-                        xxx_pratheek += f"RAM Usage: {ram_percent}% | "
+                        xxx_pratheek += f"RAM Usage: {ram_percent}%"
                         # Your existing code to display server status
 
                         await app.read_chat_history(bot)

@@ -34,17 +34,18 @@ async def get_server_status():
     total_rom = disk.total  # Total disk (ROM) size in bytes
     used_rom = disk.used
     disk_percent = disk.percent
+    load_avg = os.getloadavg()  # Get the system load average
 
-    return total_cpu_percent, total_cpu_cores, total_ram, total_rom, used_ram, used_rom, ram_percent, disk_percent, cpu_percent_per_core
+    return total_cpu_percent, total_cpu_cores, total_ram, total_rom, used_ram, used_rom, ram_percent, disk_percent, cpu_percent_per_core, load_avg
 
 async def main_pratheek():
     async with app:
         while True:
             print("Checking...")
-            total_cpu_percent, total_cpu_cores, total_ram, total_rom, used_ram, used_rom, ram_percent, disk_percent, cpu_percent_per_core = await get_server_status()
-             xxx_pratheek = f"🔗 Welcome to Star Bot's Status Channel\n\n"
-            xxx_pratheek = f"🔗 This is live status of all Yukki Bots. This Message keeps on updating in every 3 mins with live status of all Star Bots whether they are live or offline.\n\n"
-            xxx_pratheek = f"📊 | 𝗟𝗜𝗩𝗘 𝗕𝗢𝗧 𝗦𝗧𝗔𝗧𝗨𝗦\n"
+            total_cpu_percent, total_cpu_cores, total_ram, total_rom, used_ram, used_rom, ram_percent, disk_percent, cpu_percent_per_core, load_avg = await get_server_status()
+            xxx_pratheek = f"🔗 Welcome to Star Bot's Status Channel\n\n"
+            xxx_pratheek += f"🔗 This is live status of all Yukki Bots. This Message keeps on updating in every 3 mins with live status of all Star Bots whether they are live or offline.\n\n"
+            xxx_pratheek += f"📊 | 𝗟𝗜𝗩𝗘 𝗕𝗢𝗧 𝗦𝗧𝗔𝗧𝗨𝗦\n"
             for bot in BOT_LIST:
                 try:
                     yyy_pratheek = await app.send_message(bot, "/start")
@@ -71,8 +72,8 @@ async def main_pratheek():
                         uptime = datetime.datetime.now() - bot_uptimes[bot]
                         xxx_pratheek += f"\n\n🤖  @{bot}  : **Alive** ✅\n"
                         xxx_pratheek += f"┗**Uptime**: {str(uptime).split('.')[0]} | "
-                        xxx_pratheek += f"CPU Usage: {total_cpu_percent}% | "
-                        xxx_pratheek += f"RAM Usage: {ram_percent}%"
+                        xxx_pratheek += f"CPU : {total_cpu_percent}% | "
+                        xxx_pratheek += f"Load: {load_avg[0]:.2f}"
                         # Your existing code to display server status
 
                         await app.read_chat_history(bot)

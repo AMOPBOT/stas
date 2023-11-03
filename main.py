@@ -67,12 +67,10 @@ async def main_pratheek():
                         if bot not in bot_uptimes:
                             bot_uptimes[bot] = datetime.datetime.now()
                         uptime = datetime.datetime.now() - bot_uptimes[bot]
-                        xxx_pratheek += f"\n\n🤖  @{bot}\n        └ **Alive** ✅\n"
-                        xxx_pratheek += f"\n        └ **Uptime**: {str(uptime).split('.')[0]}\n"
-                        xxx_pratheek += f"╭⎋ Total CPU Usage: {total_cpu_percent}%\n"
-                        xxx_pratheek += f"╰⊚ Used RAM: {used_ram / (1024 ** 3):.2f} GB\n"
+                        xxx_pratheek += f"\n\n🤖  @{bot}\n        └ **Alive** ✅"
+                        xxx_pratheek += f"♾ **Uptime**: {str(uptime).split('.')[0]}\n"
+                        xxx_pratheek += f"╭⎋ CPU Usage: {total_cpu_percent}%\n"
                         xxx_pratheek += f"╭⎋ RAM Usage: {ram_percent}%\n"
-                        xxx_pratheek += f"╰⊚ ROM Usage: {disk_percent}%\n"
                         # Your existing code to display server status
 
                         await app.read_chat_history(bot)

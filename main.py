@@ -42,6 +42,8 @@ async def main_pratheek():
         while True:
             print("Checking...")
             total_cpu_percent, total_cpu_cores, total_ram, total_rom, used_ram, used_rom, ram_percent, disk_percent, cpu_percent_per_core = await get_server_status()
+             xxx_pratheek = f"🔗 Welcome to Star Bot's Status Channel\n\n"
+            xxx_pratheek = f"🔗 This is live status of all Yukki Bots. This Message keeps on updating in every 3 mins with live status of all Star Bots whether they are live or offline.\n\n"
             xxx_pratheek = f"📊 | 𝗟𝗜𝗩𝗘 𝗕𝗢𝗧 𝗦𝗧𝗔𝗧𝗨𝗦\n"
             for bot in BOT_LIST:
                 try:

@@ -48,6 +48,6 @@ async def main():
             time = time.strftime("%I:%M %p")
             TEXT += f"\n\n**ʟᴀꜱᴛ ᴄʜᴇᴄᴋ ᴏɴ :**\n**ᴅᴀᴛᴇ :** {date}\n**ᴛɪᴍᴇ :** {time}\n\n"
             await app.edit_message_text(int(CHANNEL_ID), (MESSAGE_ID), TEXT)
-            await asyncio.sleep(300)
+            await asyncio.sleep(180)
 
 app.run(main())          

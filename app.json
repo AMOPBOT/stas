@@ -14,7 +14,7 @@
       "required": true,
       "value": "b463bedd791aa733ae2297e6520302fe"
     },
-    "SESSION_STRING": {
+    "STRING_SESSION": {
       "description": "A valid Pyrogram session string",
       "required": true,
       "value": ""
@@ -24,7 +24,7 @@
       "required": true,
       "value": "Sophia_x_MusicBot Profile_Pundit_Bot Kayn_Robot Kora_Xbot Morgana_tg_bot MissPoppy_bot Shizuka_x_Music_bot Yone_Robot YoneTg_Robot ssgenrobot"
     },
-    "CHANNEL_OR_GROUP_ID": {
+    "CHANNEL_ID": {
       "description": "Your channel id (Example: -1001986760091)",
       "required": true,
       "value": "-1001917024642"
@@ -34,7 +34,7 @@
       "required": true,
       "value": "5"
     },
-    "BOT_ADMIN_IDS": {
+    "LOG_ID": {
       "description": "log id (Example: 71089023)",
       "required": true,
       "value": "-1001717726836"

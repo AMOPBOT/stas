@@ -35,11 +35,11 @@ async def main():
                     async for x in messages:
                         msg = x.text
                     if msg == "/RocksStatusBot":
-                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})** \n**╰⊚ sᴛᴀᴛᴜs: ᴏғғʟɪɴᴇ ❄**"
+                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})** \n**╰⊚ sᴛᴀᴛᴜs: ᴏғғʟɪɴᴇ ❌**"
                         await app.send_message(LOG_ID, f"**[{ok.first_name}](tg://openmessage?user_id={ok.id}) ᴏғғ ʜᴀɪ. ᴀᴄᴄʜᴀ ʜᴜᴀ ᴅᴇᴋʜ ʟɪʏᴀ ᴍᴀɪɴᴇ.**")
                         await app.read_chat_history(bots)
                     else:
-                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id}) : ᴀʟɪᴠᴇ ✨**\n**╰⊚** {msg}"
+                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id}) : ᴀʟɪᴠᴇ ✅**\n**╰⊚** {msg}"
                         await app.read_chat_history(bots)
                 except FloodWait as e:
                     await asyncio.sleep(e.value)

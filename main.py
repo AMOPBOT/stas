@@ -34,7 +34,7 @@ async def main():
                     messages = app.get_chat_history(bots, limit=1)
                     async for x in messages:
                         msg = x.text
-                    if msg == "/RocksStatusBot":
+                    if msg == "/bot":
                         TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})** \n**╰⊚ sᴛᴀᴛᴜs: ᴏғғʟɪɴᴇ ❌**"
                         await app.send_message(LOG_ID, f"**[{ok.first_name}](tg://openmessage?user_id={ok.id}) ᴏғғ ʜᴀɪ. ᴀᴄᴄʜᴀ ʜᴜᴀ ᴅᴇᴋʜ ʟɪʏᴀ ᴍᴀɪɴᴇ.**")
                         await app.read_chat_history(bots)

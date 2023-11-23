@@ -9,6 +9,16 @@ from pyrogram.errors import FloodWait
 load_dotenv()
 
 app = Client(
+    "piyush",
+    api_id=int(os.getenv("API_ID")),
+    api_hash=os.getenv("API_HASH"),
+)
+
+with app:
+    print(app.export_session_string())
+
+
+app = Client(
     name="piyush",
     api_id=int(os.getenv("API_ID")),
     api_hash=os.getenv("API_HASH"),

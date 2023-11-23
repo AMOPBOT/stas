@@ -35,17 +35,17 @@ async def main():
                     async for x in messages:
                         msg = x.text
                         if msg == "/bot":
-                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})** \n**╰⊚ sᴛᴀᴛᴜs: ᴏғғʟɪɴᴇ ❌**"
-                        await app.send_message(LOG_ID, f"**[{ok.first_name}](tg://openmessage?user_id={ok.id}) ᴏғғ ʜᴀɪ. ᴀᴄᴄʜᴀ ʜᴜᴀ ᴅᴇᴋʜ ʟɪʏᴀ ᴍᴀɪɴᴇ.**")
-                        await app.read_chat_history(bots)
-                       else:
-           # Check for the presence of the word "Offline" in the message
-                      if "Offline" in msg:
-                      TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id}) : ᴏғғʟɪɴᴇ ❌**"
-                      await app.read_chat_history(bots)
-                      else:
-                     TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id}) : ᴀʟɪᴠᴇ ✅**\n**╰⊚** {msg}"
-                     await app.read_chat_history(bots)
+                            TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})** \n**╰⊚ sᴛᴀᴛᴜs: ᴏғғʟɪɴᴇ ❌**"
+                            await app.send_message(LOG_ID, f"**[{ok.first_name}](tg://openmessage?user_id={ok.id}) ᴏғғ ʜᴀɪ. ᴀᴄᴄʜᴀ ʜᴜᴀ ᴅᴇᴋʜ ʟɪʏᴀ ᴍᴀɪɴᴇ.**")
+                            await app.read_chat_history(bots)
+                        else:
+                            # Check for the presence of the word "Offline" in the message
+                            if "Offline" in msg:
+                                TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id}) : ᴏғғʟɪɴᴇ ❌**"
+                                await app.read_chat_history(bots)
+                            else:
+                                TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id}) : ᴀʟɪᴠᴇ ✅**\n**╰⊚** {msg}"
+                                await app.read_chat_history(bots)
 
                 except FloodWait as e:
                     await asyncio.sleep(e.value)
@@ -56,4 +56,4 @@ async def main():
             await app.edit_message_text(int(CHANNEL_ID), (MESSAGE_ID), TEXT)
             await asyncio.sleep(180)
 
-app.run(main())          
+app.run(main())

@@ -9,16 +9,6 @@ from pyrogram.errors import FloodWait
 load_dotenv()
 
 app = Client(
-    "piyush",
-    api_id=int(os.getenv("API_ID")),
-    api_hash=os.getenv("API_HASH"),
-)
-
-with app:
-    print(app.export_session_string())
-
-
-app = Client(
     name="piyush",
     api_id=int(os.getenv("API_ID")),
     api_hash=os.getenv("API_HASH"),
@@ -44,19 +34,13 @@ async def main():
                     messages = app.get_chat_history(bots, limit=1)
                     async for x in messages:
                         msg = x.text
-                        if msg == "/bot":
-                            TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})** \n**╰⊚ sᴛᴀᴛᴜs: ᴏғғʟɪɴᴇ ❌**"
-                            await app.send_message(LOG_ID, f"**[{ok.first_name}](tg://openmessage?user_id={ok.id}) ᴏғғ ʜᴀɪ. ᴀᴄᴄʜᴀ ʜᴜᴀ ᴅᴇᴋʜ ʟɪʏᴀ ᴍᴀɪɴᴇ.**")
-                            await app.read_chat_history(bots)
-                        else:
-                            # Check for the presence of the word "Offline" in the message
-                            if "Offline" in msg:
-                                TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id}) : ᴏғғʟɪɴᴇ ❌**"
-                                await app.read_chat_history(bots)
-                            else:
-                                TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id}) : ᴀʟɪᴠᴇ ✅**\n**╰⊚** {msg}"
-                                await app.read_chat_history(bots)
-
+                    if msg == "/bot":
+                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})** \n**╰⊚ sᴛᴀᴛᴜs: ᴏғғʟɪɴᴇ ❌**"
+                        await app.send_message(LOG_ID, f"**[{ok.first_name}](tg://openmessage?user_id={ok.id}) ᴏғғ ʜᴀɪ. ᴀᴄᴄʜᴀ ʜᴜᴀ ᴅᴇᴋʜ ʟɪʏᴀ ᴍᴀɪɴᴇ.**")
+                        await app.read_chat_history(bots)
+                    else:
+                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id}) : ᴀʟɪᴠᴇ ✅**\n**╰⊚** {msg}"
+                        await app.read_chat_history(bots)
                 except FloodWait as e:
                     await asyncio.sleep(e.value)
             time = datetime.datetime.now(pytz.timezone(f"{TIME_ZONE}"))
@@ -66,4 +50,4 @@ async def main():
             await app.edit_message_text(int(CHANNEL_ID), (MESSAGE_ID), TEXT)
             await asyncio.sleep(180)
 
-app.run(main())
+app.run(main())          

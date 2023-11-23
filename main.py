@@ -46,7 +46,7 @@ async def main():
             time = datetime.datetime.now(pytz.timezone(f"{TIME_ZONE}"))
             date = time.strftime("%d %b %Y")
             time = time.strftime("%I:%M %p")
-            TEXT += f"\n\n**ʟᴀꜱᴛ ᴄʜᴇᴄᴋ ᴏɴ :**\n**ᴅᴀᴛᴇ :** {date}\n**ᴛɪᴍᴇ :** {time}\n\n"
+            TEXT += f"\n\n**ʟᴀꜱᴛ ᴄʜᴇᴄᴋ ᴏɴ :**\n**ᴅᴀᴛᴇ :** {date}\n**ᴛɪᴍᴇ :** {time}\n\nᴘᴏᴡᴇʀ ʙʏ : @ReoBots"
             await app.edit_message_text(int(CHANNEL_ID), (MESSAGE_ID), TEXT)
             await asyncio.sleep(180)
 

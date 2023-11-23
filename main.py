@@ -25,7 +25,7 @@ async def main():
     print("Status Checker Bot Started")
     async with app:
         while True:
-            TEXT = "✨ **ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ ʙᴏᴛ's sᴛᴀᴛᴜs ᴄʜᴀɴɴᴇʟ**\n\n❄ ʜᴇʀᴇ ɪs ᴛʜᴇ ʟɪsᴛ ᴏғ ᴛʜᴇ ʙᴏᴛ's ᴡʜɪᴄʜ ɪ ᴏᴡɴ ᴀɴᴅ ᴛʜᴇɪʀ sᴛᴀᴛᴜs (ᴀʟɪᴠᴇ ᴏʀ ᴅᴇᴀᴅ), ᴛʜɪs ᴍᴇssᴀɢᴇ ᴡɪʟʟ ᴋᴇᴇᴘ ᴜᴘᴅᴀᴛɪɴɢ **ᴇᴠᴇʀʏ 3 ᴍɪɴᴜᴛᴇs.**"
+            TEXT = "✨ **ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ ʙᴏᴛ's sᴛᴀᴛᴜs ᴄʜᴀɴɴᴇʟ**\n\n❄️ ʜᴇʀᴇ ɪs ᴛʜᴇ ʟɪsᴛ ᴏғ ᴛʜᴇ ʙᴏᴛ's ᴡʜɪᴄʜ ɪ ᴏᴡɴ ᴀɴᴅ ᴛʜᴇɪʀ sᴛᴀᴛᴜs (ᴀʟɪᴠᴇ ᴏʀ ᴅᴇᴀᴅ), ᴛʜɪs ᴍᴇssᴀɢᴇ ᴡɪʟʟ ᴋᴇᴇᴘ ᴜᴘᴅᴀᴛɪɴɢ **ᴇᴠᴇʀʏ 3 ᴍɪɴᴜᴛᴇs.**"
             for bots in BOT_LIST:
                 ok = await app.get_users(f"@{bots}")
                 try:
@@ -34,13 +34,19 @@ async def main():
                     messages = app.get_chat_history(bots, limit=1)
                     async for x in messages:
                         msg = x.text
-                    if msg == "/bot":
+                        if msg == "/bot":
                         TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id})** \n**╰⊚ sᴛᴀᴛᴜs: ᴏғғʟɪɴᴇ ❌**"
                         await app.send_message(LOG_ID, f"**[{ok.first_name}](tg://openmessage?user_id={ok.id}) ᴏғғ ʜᴀɪ. ᴀᴄᴄʜᴀ ʜᴜᴀ ᴅᴇᴋʜ ʟɪʏᴀ ᴍᴀɪɴᴇ.**")
                         await app.read_chat_history(bots)
-                    else:
-                        TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id}) : ᴀʟɪᴠᴇ ✅**\n**╰⊚** {msg}"
-                        await app.read_chat_history(bots)
+                       else:
+           # Check for the presence of the word "Offline" in the message
+                      if "Offline" in msg:
+                      TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id}) : ᴏғғʟɪɴᴇ ❌**"
+                      await app.read_chat_history(bots)
+                      else:
+                     TEXT += f"\n\n**╭⎋ [{ok.first_name}](tg://openmessage?user_id={ok.id}) : ᴀʟɪᴠᴇ ✅**\n**╰⊚** {msg}"
+                     await app.read_chat_history(bots)
+
                 except FloodWait as e:
                     await asyncio.sleep(e.value)
             time = datetime.datetime.now(pytz.timezone(f"{TIME_ZONE}"))

@@ -25,7 +25,7 @@ async def main():
     print("Status Checker Bot Started")
     async with app:
         while True:
-            TEXT = "✨ **ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ ʙᴏᴛ's sᴛᴀᴛᴜs ᴄʜᴀɴɴᴇʟ**\n\n❄️ ʜᴇʀᴇ ɪs ᴛʜᴇ ʟɪsᴛ ᴏғ ᴛʜᴇ ʙᴏᴛ's ᴡʜɪᴄʜ ɪ ᴏᴡɴ ᴀɴᴅ ᴛʜᴇɪʀ sᴛᴀᴛᴜs (ᴀʟɪᴠᴇ ᴏʀ ᴅᴇᴀᴅ), ᴛʜɪs ᴍᴇssᴀɢᴇ ᴡɪʟʟ ᴋᴇᴇᴘ ᴜᴘᴅᴀᴛɪɴɢ **ᴇᴠᴇʀʏ 10 ᴍɪɴᴜᴛᴇs.**"
+            TEXT = "✨ **ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴛʜᴇ ʙᴏᴛ's sᴛᴀᴛᴜs ᴄʜᴀɴɴᴇʟ**\n\n❄️ ʜᴇʀᴇ ɪs ᴛʜᴇ ʟɪsᴛ ᴏғ ᴛʜᴇ ʙᴏᴛ's ᴡʜɪᴄʜ ɪ ᴏᴡɴ ᴀɴᴅ ᴛʜᴇɪʀ sᴛᴀᴛᴜs (ᴀʟɪᴠᴇ ᴏʀ ᴅᴇᴀᴅ), ᴛʜɪs ᴍᴇssᴀɢᴇ ᴡɪʟʟ ᴋᴇᴇᴘ ᴜᴘᴅᴀᴛɪɴɢ **ᴇᴠᴇʀʏ 20 ᴍɪɴᴜᴛᴇs.**"
             for bots in BOT_LIST:
                 ok = await app.get_users(f"@{bots}")
                 try:
@@ -48,6 +48,6 @@ async def main():
             time = time.strftime("%I:%M %p")
             TEXT += f"\n\n**ʟᴀꜱᴛ ᴄʜᴇᴄᴋ ᴏɴ :**\n**ᴅᴀᴛᴇ :** {date}\n**ᴛɪᴍᴇ :** {time}\n\n©️ ᴘᴏᴡᴇʀ ʙʏ : @ReoBots\n©️ ᴘᴏᴡᴇʀ ʙʏ : @ReoBots\n©️ ᴘᴏᴡᴇʀ ʙʏ : @ReoBots"
             await app.edit_message_text(int(CHANNEL_ID), (MESSAGE_ID), TEXT)
-            await asyncio.sleep(600)
+            await asyncio.sleep(1200)
 
 app.run(main())          

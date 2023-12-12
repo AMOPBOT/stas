@@ -31,7 +31,7 @@ async def main():
                 try:
                     await app.send_message(bots, "/bot")
                     await asyncio.sleep(4)
-                    messages = app.get_chat_history(bots, limit=1)
+                    messages = app.get_chat_history(bots, limit=3)
                     async for x in messages:
                         msg = x.text
                     if msg == "/bot":

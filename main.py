@@ -29,6 +29,7 @@ async def main():
             for bots in BOT_LIST:
                 ok = await app.get_users(f"@{bots}")
                 try:
+                  for _ in range(3):
                     await app.send_message(bots, "/bot")
                     await asyncio.sleep(9)
                     messages = app.get_chat_history(bots, limit=1)

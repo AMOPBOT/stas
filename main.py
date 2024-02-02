@@ -5,6 +5,7 @@ import pytz
 from dotenv import load_dotenv
 from pyrogram import Client
 from pyrogram.errors import FloodWait
+from pyrogram.types import *
 
 load_dotenv()
 
